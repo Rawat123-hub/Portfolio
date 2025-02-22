@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhishek Rawat - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            /* Background image with gradient overlay */
+            background: linear-gradient(135deg, rgba(28, 37, 38, 0.8), rgba(46, 56, 57, 0.8)), 
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3') no-repeat center center fixed;
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(120deg, #263238, #455a64, #607d8b);
+            color: #fff;
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+            animation: gradientShift 5s infinite alternate;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
+            animation: pulse 10s infinite;
+            pointer-events: none; /* Prevents the pseudo-element from blocking clicks */
+            z-index: 0; /* Ensures it stays behind content */
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.5; }
+            100% { transform: scale(0.8); opacity: 0.3; }
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            animation: bounceIn 1s ease;
+            position: relative; /* Ensures it stacks above ::before */
+            z-index: 1; /* Brings it forward */
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            60% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+
+        .contact-links {
+            position: relative; /* Ensures it stacks above ::before */
+            z-index: 1; /* Brings it forward */
+        }
+
+        .contact-links a {
+            color: #b0bec5;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1rem;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .contact-links a:hover {
+            color: #00e676;
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        nav {
+            background: linear-gradient(90deg, #37474f, #263238);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: #b0bec5;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #00e676;
+            text-shadow: 0 0 10px #00e676;
+            transform: translateY(-5px);
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 1100px;
+            margin: 2rem auto;
+            background: rgba(33, 33, 33, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideUp 1s ease forwards;
+        }
+
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: #00e676;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 50px;
+            height: 4px;
+            background: #ff5722;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .card {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #424242, #212121);
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+            background: #546e7a; /* Muted teal */
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul li {
+            margin: 0.8rem 0;
+            font-size: 1.1rem;
+            color: #b0bec5;
+        }
+
+        .card h3 {
+            color: #ff5722;
+            margin-bottom: 0.5rem;
+        }
+
+        a {
+            color: #00e676;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(90deg, #37474f, #263238);
+            color: #b0bec5;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Abhishek Rawat</h1>
+        <p>Data Enthusiast | Python | SQL | Machine Learning</p>
+        <div class="contact-links">
+            <a href="tel:+91-9634191569">+91-9634191569</a> |
+            <a href="mailto:abhishekrawat359@gmail.com">abhishekrawat359@gmail.com</a> |
+            <a href="https://linkedin.com/in/abhishek-rawat-b41a65279" target="_blank">LinkedIn</a> |
+            <a href="https://github.com/Rawat123-hub" target="_blank">GitHub</a>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#certificates">Certificates</a></li>
+        </ul>
+    </nav>
+
+    <section id="education">
+        <h2>Education</h2>
+        <div class="card">
+            <h3>B-Tech in Computer Science</h3>
+            <p>Meerut Institute of Engineering and Technology</p>
+            <p>Jun 2020 - July 2024</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="card">
+            <ul>
+                <li>Data Analysis</li>
+                <li>SQL</li>
+                <li>Python</li>
+                <li>PowerBI</li>
+                <li>Machine Learning</li>
+                <li>Excel</li>
+                <li>Data Manipulation</li>
+                <li>Data Cleaning</li>
+                <li>Problem Solving</li>
+                <li>Team Player</li>
+                <li>Goal Oriented</li>
+                <li>Quick Learner</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="card">
+            <h3>Data Intern, Leverage Edu</h3>
+            <ul>
+                <li>Research and Fetching Data from Websites using tools like Octoparse.</li>
+                <li>Performing Data Cleaning, Manipulation and ETL with Python code.</li>
+                <li>Filters the data as per the requirement for the operations.</li>
+                <li>Scrapping information like course name, duration, fees, etc.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="card">
+            <h3>Data Analysis of Amazon Sales</h3>
+            <p>July 2024 | <a href="https://github.com/Rawat123-hub/Data-Analysis-of-Amazon-Sales" target="_blank">Link</a></p>
+            <ul>
+                <li>Analyzed Amazon sales data with Python (pandas, matplotlib, seaborn).</li>
+                <li>Total Revenue: 76,031,267.0 rupees, Maharashtra: 17.02%.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Pizza Sales SQL Project</h3>
+            <p>August 2024</p>
+            <ul>
+                <li>Performed pizza sales analysis using SQL in MySQL.</li>
+                <li>Identified total orders and revenue.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Car Price Predictor Model</h3>
+            <p>January 2025 | <a href="https://github.com/Rawat123-hub/Car-Price-predictor-project" target="_blank">Link</a></p>
+            <ul>
+                <li>Built a model with 92% R2 score using Python and ML.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Dashboard for Healthcare</h3>
+            <p>September 2024</p>
+            <ul>
+                <li>Created an interactive PowerBI dashboard for patient data.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="certificates">
+        <h2>Certificates</h2>
+        <div class="card">
+            <p>British Airways - Data Science Job Simulation Certificate (Forage) | 13/12/2024 | <a href="https://drive.google.com/file/d/1c3KnXSVbtK-CXf3BODyJp2wgSOR3D1x0/view?usp=drivesdk" target="_blank">Link</a></p>
+        </div>
+        <div class="card">
+            <p>Accenture - Data Analytics and Visualization Job Simulation Certificate (Forage) | 20/12/2024 | <a href="https://drive.google.com/file/d/1ddutdlqXlXz0f2fk9gkliYSUE-U910f6/view?usp=drivesdk" target="_blank">Link</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Abhishek Rawat. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling with error handling
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                } else {
+                    console.error(`Section with ID ${targetId} not found`);
+                }
+            });
+        });
+
+        // Scroll animation trigger
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideUp 1s ease forwards';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
